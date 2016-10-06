@@ -23,12 +23,18 @@ namespace WordRiver.Views
     /// </summary>
     public sealed partial class GamePage : Page
     {
+        public GameViewModel ViewModel;
+
         public GamePage()
         {
             this.InitializeComponent();
             ViewModel = new GameViewModel();
         }
-
-        public GameViewModel ViewModel;
+        
+        private void SubmitButton_OnClick(object sender, RoutedEventArgs e)
+        {
+            ViewModel.SubmitWord(InputBox.Text);
+            InputBox.Text = "";
+        }
     }
 }

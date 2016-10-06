@@ -17,16 +17,20 @@
         <ListView
             x:Name="WordList"
             ItemsSource="{x:Bind ViewModel.Turns}"
+            Grid.Row="0"
             HorizontalAlignment="Stretch"
             VerticalAlignment="Stretch">
 
             <ListView.ItemTemplate>
                 <DataTemplate x:DataType="vm:TurnViewModel">
-                    <local:Turn />
-                    <!--<TextBlock Text="{x:Bind Word}" />-->
+                    <!--<local:Turn />-->
+                    <TextBlock Text="{x:Bind Word}" />
                 </DataTemplate>
             </ListView.ItemTemplate>
         </ListView>
-
+        <StackPanel Grid.Row="1" Orientation="Horizontal">
+            <TextBox x:Name="InputBox" PlaceholderText="Input"/>
+            <Button Content="Submit" Click="SubmitButton_OnClick"/>
+        </StackPanel>
     </Grid>
 </Page>

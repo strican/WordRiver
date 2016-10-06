@@ -36,10 +36,21 @@ namespace WordRiver.ViewModels
             var compTurn = new TurnViewModel(compWord, PlayerType.Computer);
             Turns.Add(compTurn);
 
-            var playerTurn = new TurnViewModel(PlayerType.Player);
-            Turns.Add(playerTurn);
+            //var playerTurn = new TurnViewModel(PlayerType.Player);
+            //Turns.Add(playerTurn);
+        }
+
+        public void SubmitWord(string word)
+        {
+            if (Game.AttemptWord(word) == ResponseType.Success)
+            {
+                var playerTurn = new TurnViewModel(word, PlayerType.Player);
+                Turns.Add(playerTurn);
+
+                var compWord = Game.GetNextWord();
+                var compTurn = new TurnViewModel(compWord, PlayerType.Computer);
+                Turns.Add(compTurn);
+            }
         }
     }
-
-
 }
