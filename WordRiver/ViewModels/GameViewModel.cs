@@ -40,8 +40,11 @@ namespace WordRiver.ViewModels
             //Turns.Add(playerTurn);
         }
 
-        public void SubmitWord(string word)
+        public void SubmitWord(string submission)
         {
+            // Normalize the word by converting to uppercase
+            string word = submission.ToUpper();
+
             if (Game.AttemptWord(word) == ResponseType.Success)
             {
                 var playerTurn = new TurnViewModel(word, PlayerType.Player);

@@ -33,6 +33,8 @@ namespace WordRiver.Models
 
         public ResponseType IsValidWord(string word)
         {
+            Debug.Assert(word == word.ToUpper());
+
             ResponseType response = ResponseType.Error;
 
             if (!Words.ContainsKey(word))
@@ -52,6 +54,7 @@ namespace WordRiver.Models
 
         public void SelectWord(string word)
         {
+            Debug.Assert(word == word.ToUpper());
             Debug.Assert(Words.Keys.Contains(word));
             Debug.Assert(!Words[word]);
 
