@@ -7,25 +7,44 @@ using System.Threading.Tasks;
 
 namespace DictionaryFilter
 {
+    class IOPair
+    {
+        public string InputPath;
+        public string OutputPath;
+
+        public IOPair(string input, string output)
+        {
+            InputPath = input;
+            OutputPath = output;
+        }
+    }
+
     class Program
     {
         static void Main(string[] args)
         {
-            string currentDir = System.IO.Directory.GetCurrentDirectory();
-            using (StreamWriter writer = new StreamWriter(currentDir + "\\WordRiverDict.txt"))
+            List<IOPair> dictionaries = new List<IOPair>();
+            dictionaries.Add(new IOPair("dictionary.txt", "WordRiverDict.txt"));
+            dictionaries.Add(new IOPair("dictionary_test.txt", "WordRiverDictTest.txt"));
+
+            foreach (var dict in dictionaries)
             {
-                using (StreamReader reader = new StreamReader(currentDir + "\\dictionary.txt"))
+                string currentDir = System.IO.Directory.GetCurrentDirectory();
+                using (StreamWriter writer = new StreamWriter(currentDir + "\\" + dict.OutputPath))
                 {
-                    string line;
-                    while ((line = reader.ReadLine()) != null)
+                    using (StreamReader reader = new StreamReader(currentDir + "\\" + dict.InputPath))
                     {
-                        // Check the contents of the line and write it to our
-                        // final dictionary if it meets the requirements:
-                        //   1. 4 letters lonng
-                        //   2. Not a proper noun
-                        if (line.Length == 4 && char.IsLower(line[0]))
+                        string line;
+                        while ((line = reader.ReadLine()) != null)
                         {
-                            writer.WriteLine(line);
+                            // Check the contents of the line and write it to our
+                            // final dictionary if it meets the requirements:
+                            //   1. 4 letters lonng
+                            //   2. Not a proper noun
+                            if (line.Length == 4 && char.IsLower(line[0]) && !line.Contains('\''))
+                            {
+                                writer.WriteLine(line);
+                            }
                         }
                     }
                 }
