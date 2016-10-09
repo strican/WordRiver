@@ -8,7 +8,7 @@ using WordRiver.Models;
 
 namespace WordRiver.Common
 {
-    class BasicWordSearch : IWordSearch
+    public class BasicWordSearch : IWordSearch
     {
         public string FindNextWord(IGameDictionary dictionary, string previous)
         {

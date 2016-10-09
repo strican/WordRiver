@@ -1,6 +1,6 @@
 ﻿namespace WordRiver.Common
 {
-    interface IGameDictionary
+    public interface IGameDictionary
     {
         ResponseType IsValidWord(string word);
 
@@ -10,7 +10,7 @@
         // Move GameDictionary to WordRiver.Common?
     }
 
-    interface IWordSearch
+    public interface IWordSearch
     {
         string FindNextWord(IGameDictionary dictionary, string previous);
     }

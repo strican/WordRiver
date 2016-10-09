@@ -8,7 +8,7 @@ using WordRiver.Common;
 
 namespace WordRiver.Models
 {
-    class GameDictionary : IGameDictionary
+    public class GameDictionary : IGameDictionary
     {
         private Dictionary<string, bool> Words;
 
