@@ -29,7 +29,7 @@
             </ListView.ItemTemplate>
         </ListView>
         <StackPanel Grid.Row="1" Orientation="Horizontal">
-            <TextBox x:Name="InputBox" PlaceholderText="Input"/>
+            <TextBox x:Name="InputBox" PlaceholderText="Input" KeyDown="InputBox_OnKeyDown"/>
             <Button Content="Submit" Click="SubmitButton_OnClick"/>
         </StackPanel>
     </Grid>

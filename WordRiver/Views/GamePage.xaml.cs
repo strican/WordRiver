@@ -5,6 +5,7 @@ using System.Linq;
 using System.Runtime.InteropServices.WindowsRuntime;
 using Windows.Foundation;
 using Windows.Foundation.Collections;
+using Windows.System;
 using Windows.UI.Xaml;
 using Windows.UI.Xaml.Controls;
 using Windows.UI.Xaml.Controls.Primitives;
@@ -30,7 +31,15 @@ namespace WordRiver.Views
             this.InitializeComponent();
             ViewModel = new GameViewModel();
         }
-        
+
+        private void InputBox_OnKeyDown(object sender, KeyRoutedEventArgs e)
+        {
+            if (e.Key == VirtualKey.Enter)
+            {
+                SubmitButton_OnClick(sender, e);
+            }
+        }
+
         private void SubmitButton_OnClick(object sender, RoutedEventArgs e)
         {
             ViewModel.SubmitWord(InputBox.Text);
